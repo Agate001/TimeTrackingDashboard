@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+
+
+* { /*changes all elements to have zero margin and padding. You can still add your own custom margin and padding the * is unversal so it affects all elements*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: hsl(226, 43%, 10%); 
+  color: white;
+  min-height: 100vh;
+  font-family: "Rubik";
+}
+
+/* Center the whole dashboard and let it shrink on small screens */
+.gridcon {
+  width: 100%;
+  max-width: 1110px;     
+  margin: 40px auto;     /* centers the grid */
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+}
+
+/* ========== BIG USER CARD ========== */
+
+.usercard {
+  background-color: hsl(235, 46%, 20%); 
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* top purple part */
+.usertop {
+  background-color: hsl(246, 80%, 60%); 
+  padding: 2rem 2rem 3rem;
+}
+
+.JERMEY {
+  height: 78px;
+  width: 78px;
+  border-radius: 50%;
+  border: 3px solid white;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.usertop p {
+  font-size: 0.9rem;
+  color: hsl(236, 100%, 87%); /* pale blue */
+}
+
+.usertop h1 {
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+/* bottom of user card daily weekly monthly */
+.usercard > div:last-child { /*target the last element inside the div*/
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* makes buttons look like text */
+.p-like-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: hsl(235, 45%, 61%); /* desaturated blue */
+  text-align: left;
+  cursor: pointer;
+}
+
+.p-like-button:hover {
+  color: white;
+}
+
+
+
+.workbg,
+.playbg,
+.studybg,
+.exbg,
+.socialbg,
+.selfcarebg {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 246px; 
+}
+
+.workbg { background-color: hsl(15, 100%, 70%); }
+.playbg { background-color: hsl(195, 74%, 62%); }
+.studybg { background-color: hsl(348, 100%, 68%); }
+.exbg { background-color: hsl(145, 58%, 55%); }
+.socialbg { background-color: hsl(264, 64%, 52%); }
+.selfcarebg { background-color: hsl(43, 84%, 65%); }
+
+/* icons at the top right of each card */
+.workbg > img, /* targets the images int the div since I have these as classes for the divs mostly practice and so i dont have to copy and paste the same class over and over*/
+.playbg > img,
+.studybg > img,
+.exbg > img,
+.socialbg > img,
+.selfcarebg > img {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  width: 60px;
+}
+
+/* dark inner card */
+.smallbtm {
+  background-color: hsl(235, 46%, 20%); /* dark blue */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-top: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.smallbtm:hover {
+  background-color: #252a5a;
+}
+
+/* top row: title + three dots */
+.rowtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rowtop p {
+  margin: 0;
+  font-size: 18px; /* from style guide */
+}
+
+.rowtop img {
+  width: 18px;
+}
+
+/* You can use these classes once you add hours/previous text */
+.current-hours {
+  margin-top: 18px;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.previous-text {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: hsl(235, 45%, 61%);
+}
+
+/* ========== DESKTOP LAYOUT (4x2 grid) ========== */
+
+@media (min-width: 700px) {
+  .gridcon {
+    grid-template-columns: repeat(4, 255px); /* 4 fixed columns */
+    grid-auto-rows: 246px;
+  }
+
+  /* make user card tall on the left */
+  .usercard {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .workbg   { grid-column: 2; grid-row: 1; }
+  .playbg   { grid-column: 3; grid-row: 1; }
+  .studybg  { grid-column: 4; grid-row: 1; }
+  .exbg     { grid-column: 2; grid-row: 2; }
+  .socialbg { grid-column: 3; grid-row: 2; }
+  .selfcarebg { grid-column: 4; grid-row: 2; }
+}
+@media (max-width: 600px) {
+
+  /* Make the colored cards shorter */
+  .workbg,
+  .playbg,
+  .studybg,
+  .exbg,
+  .socialbg,
+  .selfcarebg {
+    height: 180px; 
+  }
+
+  /* Make the dark bottom part shorter */
+  .smallbtm {
+    height: 120px;
+}
+.usertop {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .JERMEY {
+    height: 60px;
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .usertop h1 {
+    font-size: 1.6rem;
+  }
+
+  /* makes it so the text is left to right instead of top to bottom*/
+.usercard > div:last-child {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+}
