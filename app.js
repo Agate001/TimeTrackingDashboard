@@ -39,7 +39,7 @@ function getLabel(timeframe) { //simple function to get the previous value of cu
   if (timeframe === "monthly") return "Last Month - ";
 }
 
-function updateUI(data, timeframe) { //updates depending on button and reads its like an array which is neat
+function updateUI(data, timeframe) { //updates depending on button and reads its like an array because of square brackets in the json file
 
   // Work
   workhourscurrent.innerText = data[0].timeframes[timeframe].current + "hrs";
